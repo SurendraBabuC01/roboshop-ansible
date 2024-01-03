@@ -1,0 +1,3 @@
+- name: shipping
+  ansible.builtin.debug:
+    msg: Component - shipping
