@@ -1,0 +1,4 @@
+- name: Roboshop Setup Ansible
+  hosts: all
+  roles:
+    - "{{ role_name }}"
