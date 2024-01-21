@@ -18,12 +18,12 @@
   args:
     chdir: /app
 
-#- name: Include Schema Setup
-#  ansible.builtin.import_tasks:
-#    file: schema_setup.yml
-#
-#- name: Include SystemD Service
-#  ansible.builtin.import_tasks:
-#    file: systemd_setup.yml
+- name: Include Schema Setup
+  ansible.builtin.import_tasks:
+    file: schema_setup.yml
+
+- name: Include SystemD Service
+  ansible.builtin.import_tasks:
+    file: systemd_setup.yml
 
 
