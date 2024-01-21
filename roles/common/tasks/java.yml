@@ -33,6 +33,8 @@
 
 - name: Move {{component}} jar file
   ansible.builtin.shell: mv target/{{component}}-1.0.jar {{component}}.jar
+  args:
+    chdir: /app
 
 - name: Include Schema Setup
   ansible.builtin.import_tasks:
