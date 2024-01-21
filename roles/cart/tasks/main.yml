@@ -1,3 +1,4 @@
-- name: cart
-  ansible.builtin.debug:
-    msg: Component - cart
+- name: Import common NodeJS
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: nodejs
