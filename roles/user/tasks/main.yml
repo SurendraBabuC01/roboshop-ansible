@@ -1,3 +1,4 @@
-- name: user
-  ansible.builtin.debug:
-    msg: Component - user
+- name: Import common NodeJS
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: nodejs
