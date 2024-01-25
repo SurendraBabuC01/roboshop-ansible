@@ -1,12 +1,17 @@
 filebeat.inputs:
   - type: filestream
-    id: {{ component }}
+    id: { { component } }
     enabled: true
     paths:
-      - {{ log_file }}
+      - { { log_file } }
+
+    fields:
+      component: { { component } }
 
 output.logstash:
-  hosts: ["172.31.38.65:5044"]
+  hosts: [ "172.31.38.65:5044" ]
+
+
 
 ## Default
 filebeat.config.modules:
