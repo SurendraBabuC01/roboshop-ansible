@@ -8,6 +8,11 @@
     src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
+- name: Import Filebeat
+  ansible.builtin.import_role:
+    name: elb
+    tasks_from: filebeat
+
 - name: Remove App Directory
   ansible.builtin.file:
     path: /usr/share/nginx/html/
