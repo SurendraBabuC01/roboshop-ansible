@@ -32,3 +32,7 @@ scrape_configs:
     relabel_configs:
       - source_labels: [ __meta_ec2_tag_Name ]
         target_label: Name
+      - source_labels: [ __meta_ec2_tag_component ]
+        target_label: component
+      - source_labels: [ __meta_ec2_tag_env ]
+        target_label: env
