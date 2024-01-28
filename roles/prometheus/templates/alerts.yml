@@ -25,7 +25,7 @@ groups:
         annotations:
           summary: Server Status
 
-      {%- for component in components %}
+      {% for component in components %}
 
       - alert: ServiceStatus
         expr: node_systemd_unit_state{component={{ component.name }},  exported_name={{ component.service_name }}, state="active"} < 1
@@ -33,5 +33,5 @@ groups:
         labels:
           severity: page
         annotations:
-          summary: { { component.name } } Component - Service Status
+          summary: {{ component.name }} Component - Service Status
       {%- endfor %}
