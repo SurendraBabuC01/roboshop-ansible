@@ -9,35 +9,29 @@ groups:
         annotations:
           summary: High CPU Usage
 
-      - name: MemoryUtilization
-        rules:
-          - alert: HighMemoryUtilization
-            expr: 100 - (100 * ((node_memory_MemFree_bytes + node_memory_Cached_bytes + node_memory_Buffers_bytes) / node_memory_MemTotal_bytes)) > 50
-            for: 1m
-            labels:
-              severity: page
-            annotations:
-              summary: High Memory Usage
+      - alert: HighMemoryUtilization
+        expr: 100 - (100 * ((node_memory_MemFree_bytes + node_memory_Cached_bytes + node_memory_Buffers_bytes) / node_memory_MemTotal_bytes)) > 50
+        for: 1m
+        labels:
+          severity: page
+        annotations:
+          summary: High Memory Usage
 
-          - name: ServerStatus
-            rules:
-              - alert: ServerStatus
-                expr: up{job="ec2-nodes"} < 1
-                for: 1m
-                labels:
-                  severity: page
-                annotations:
-                  summary: Server Status
+      - alert: ServerStatus
+        expr: up{job="ec2-nodes"} < 1
+        for: 1m
+        labels:
+          severity: page
+        annotations:
+          summary: Server Status
 
-          - name: ServiceStatus
-            rules:
-              {%- for component in components %}
+      { %- for component in components % }
 
-              - alert: ServiceStatus
-                expr: node_systemd_unit_state{component={{ component.name }},  exported_name={{ component.service_name }}, state="active"} < 1
-                for: 1m
-                labels:
-                  severity: page
-                annotations:
-                  summary: {{ component.name }} Component - Service Status
-              {%- endfor %}
+      - alert: ServiceStatus
+        expr: node_systemd_unit_state{component={{ component.name }},  exported_name={{ component.service_name }}, state="active"} < 1
+        for: 1m
+        labels:
+          severity: page
+        annotations:
+          summary: { { component.name } } Component - Service Status
+      {%- endfor %}
