@@ -1,5 +1,5 @@
 groups:
-  - name: CPUUtilization
+  - name: Alerts
     rules:
       - alert: HighCPUUtilization
         expr: 100 - (avg by (component, env, instance, job, name) (rate(node_cpu_seconds_total{mode="idle"}[1m]) * 100)) > 50
