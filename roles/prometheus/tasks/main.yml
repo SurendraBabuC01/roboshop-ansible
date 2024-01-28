@@ -1,7 +1,10 @@
 - name: Copy Prometheus Configuration
   ansible.builtin.template:
-    src: prometheus.yml
-    dest: /opt/prometheus/prometheus.yml
+    src: {{ item }}.yml
+    dest: /opt/prometheus/{{ item }}.yml
+  loop:
+    - prometheus.yml
+    - alerts.yml
 
 - name: Start Prometheus
   ansible.builtin.systemd:
