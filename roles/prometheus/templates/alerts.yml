@@ -17,7 +17,7 @@ groups:
         annotations:
           summary: High Memory Usage
 
-      - alert: ServerStatus
+      - alert: ServerDown
         expr: up < 1
         for: 1m
         labels:
@@ -27,7 +27,7 @@ groups:
 
       {% for component in components %}
 
-      - alert: ServiceStatus
+      - alert: ServiceDown
         expr: node_systemd_unit_state{component="{{ component.name }}",  exported_name="{{ component.service_name }}.service", state="active"} < 1
         for: 1m
         labels:
