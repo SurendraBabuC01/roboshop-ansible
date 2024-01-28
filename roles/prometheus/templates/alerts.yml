@@ -28,7 +28,7 @@ groups:
       {% for component in components %}
 
       - alert: ServiceStatus
-        expr: node_systemd_unit_state{component={{ component.name }},  exported_name={{ component.service_name }}.service, state="active"} < 1
+        expr: node_systemd_unit_state{component="{{ component.name }}",  exported_name="{{ component.service_name }}.service", state="active"} < 1
         for: 1m
         labels:
           severity: page
