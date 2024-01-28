@@ -34,4 +34,4 @@ groups:
           severity: page
         annotations:
           summary: {{ component.name }} Component - Service Status
-      {%- endfor %}
+      {% endfor %}
