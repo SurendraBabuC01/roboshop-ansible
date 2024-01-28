@@ -4,9 +4,9 @@ labels:
   - { tag: env, label: env }
 
 components:
-  - { name: frontend, service_name: nginx.service }
-  - { name: catalogue, service_name: catalogue.service }
-  - { name: user, service_name: user.service }
-  - { name: cart, service_name: cart.service }
-  - { name: shipping, service_name: shipping.service }
-  - { name: payment, service_name: payment.service }
+  - { name: frontend, service_name: nginx }
+  - { name: catalogue, service_name: catalogue }
+  - { name: user, service_name: user }
+  - { name: cart, service_name: cart }
+  - { name: shipping, service_name: shipping }
+  - { name: payment, service_name: payment }
