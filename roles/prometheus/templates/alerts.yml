@@ -18,7 +18,7 @@ groups:
           summary: High Memory Usage
 
       - alert: ServerStatus
-        expr: up{job="ec2-nodes"} < 1
+        expr: up < 1
         for: 1m
         labels:
           severity: page
