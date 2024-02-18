@@ -11,9 +11,7 @@ pipeline {
     }
 
     parameters {
-
         string(name: 'component', defaultValue: '', description: 'Provide the Component Name')
-
     }
 
     stages {
