@@ -11,6 +11,8 @@ pipeline {
     }
 
     parameters {
+        choice(name: 'env', choices: ['dev', 'prod'], description: 'Pick Environment')
+
         string(name: 'component', defaultValue: '', description: 'Provide the Component Name')
     }
 
