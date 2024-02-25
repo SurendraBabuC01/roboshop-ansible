@@ -1,2 +1,3 @@
 component: frontend
 log_file: /var/log/nginx/access.log
+app_version: 1.0.0
