@@ -16,8 +16,6 @@ pipeline {
         string(name: 'component', defaultValue: '', description: 'Provide the Component Name')
 
         string(name: 'app_version', defaultValue: '', description: 'Provide the Deployment APP Version')
-
-        string(name: 'force_schema_reload', defaultValue: 'false', description: 'Provide the true or false')
     }
 
     stages {
@@ -31,7 +29,7 @@ pipeline {
         stage('Ansible') {
             steps {
                 sh 'aws ec2 describe-instances --filters Name=tag:Name,Values=${component}-${env} Name=instance-state-name,Values=running --query \'Reservations[*].Instances[*].PrivateIpAddress\' --output text >/tmp/inv'
-                sh 'ansible-playbook -i /tmp/inv roboshop.yml -e ansible_user=centos -e ansible_password=DevOps321 -e env=${env} -e role_name=${component} -e force_schema_reload=${force_schema_reload}'
+                sh 'ansible-playbook -i /tmp/inv roboshop.yml -e ansible_user=centos -e ansible_password=DevOps321 -e env=${env} -e role_name=${component}'
             }
         }
 
